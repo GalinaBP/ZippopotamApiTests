@@ -68,4 +68,5 @@ public class Test1 {
     public void testItemInResponseBody1001(){
         given().when().get("http://api.zippopotam.us/CH/1001").then().assertThat().body("places.'state'", hasItem("Canton de Vaud"));
     }
+    
 }
