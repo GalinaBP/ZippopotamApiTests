@@ -7,7 +7,7 @@ import static io.restassured.RestAssured.given;
 import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.hasItem;
 
-public class Test1 {
+public class TestA {
 
     @Test(dataProvider = "zipCodesAndPlaces", dataProviderClass = Parameterized.class)
     public void testBody90210(String countryCode, String zipCode, String expectedPlaceName) {
