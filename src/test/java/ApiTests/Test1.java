@@ -8,12 +8,14 @@ import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.hasItem;
 
 public class Test1 {
-    @Test
-    public void testBody90210() {
+
+    @Test(dataProvider = "zipCodesAndPlaces", dataProviderClass = Parameterized.class)
+    public void testBody90210(String countryCode, String zipCode, String expectedPlaceName) {
         given().
+                pathParam("countryCode", countryCode).pathParam("zipCode", zipCode).
                 when().
-                get("http://api.zippopotam.us/us/90210").
-                then().assertThat().body("places[0].'place name'", equalTo("Beverly Hills"));
+                get("http://api.zippopotam.us/{countryCode}/{zipCode}").
+                then().assertThat().body("places[0].'place name'", equalTo(expectedPlaceName));
     }
 
     @Test
